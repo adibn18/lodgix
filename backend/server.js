@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const userRoutes = require("./routes/user");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
@@ -13,6 +14,7 @@ const PORT = process.env.PORT
 app.get("/",(req,res) => {
     res.send("Hello , from express");
 });
+app.use("/api/users",userRoutes);
 app.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`);
 });
