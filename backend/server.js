@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth.routes");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ app.get("/",(req,res) => {
     res.send("Hello , from express");
 });
 app.use("/api/users",userRoutes);
+app.use("/api/auth",authRoutes);
 app.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`);
 });
